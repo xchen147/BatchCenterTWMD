@@ -58,5 +58,5 @@ with various flags reproduces our WMT-17 results.
 | gs | ground truth of similarity | None
 | metric | use metrics from our metric list | TWMD |
 | batch_center | applying batch centering to the word vectors | True |
-| temp | Temperature for TWMD and TRWMD | 0.1
+| temp | Temperature for TWMD and TRWMD | 0.1 (TWMD-batch) <br> 0.15 (TRWMD-batch) <br> 0.02 (TWMD/TRWMD)
 

@@ -24,8 +24,7 @@ conda activate TWMD-b
 ```sh
 conda install pytorch=1.6 torchvision cudatoolkit=10.1 -c pytorch
 conda install numpy scipy 
-pip install transformers==3.0.2
-pip install tqdm
+pip install transformers==3.0.2 jsonlines tqdm
 ```
 
 ### Datasets
@@ -37,13 +36,13 @@ The STS dataset can also be obtained following the [SBERT-WK](https://github.com
 
 #### Reproducing our results
 
-The sample codes that recreates our results on STS and WMT datasets using various metrics, with and without centering, can be found in `run_STS.py` and `run_WMT.py`.
+The sample codes that recreates our results on STS and WMT datasets using various metrics, with and without centering, can be found in `run_STS.py` and `run_wmt.py`.
 
 We provided metrics `SBERT`, `CKA`, `BERTscore`, `TWMD` and `TWMD`. Our `MoverScore` implementation follows the [MoverScore](https://github.com/AIPHES/emnlp19-moverscore) repository
 
 For example, running
 ```sh
-python run_WMT.py --model_name roberta-base --use_metric TWMD --use_batch_centering True --use_correlation pearsonr
+python run_wmt.py --model_name roberta-base --use_metric TWMD --use_batch_center True --use_correlation pearsonr
 ```
 with various flags reproduces our WMT results.
 

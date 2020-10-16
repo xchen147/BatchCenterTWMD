@@ -44,7 +44,6 @@ with jsonlines.open('./dataset/WMT/wmt'+str(year)+'.jsonl') as f:
 scorer = Scorer(model_name = model_name)
 corrs = []
 for lang in langs:
-    print(use_batch_center)
     corrs.append(scorer.score(s1[lang],s2[lang],scores[lang],metric=use_metric, T=T, batch_center=use_batch_center,
     	return_correlation=use_correlation)[-1])
 

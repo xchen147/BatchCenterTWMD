@@ -11,19 +11,20 @@ parser.add_argument("--use_metric",default='TWMD',type=str)
 parser.add_argument("--use_batch_center",default='True',type=str)
 parser.add_argument("--T",default=None,type=float)
 parser.add_argument("--use_correlation",default='pearsonr',type=str)
+parser.add_argument("--year",default=17,type=int)
 args = parser.parse_args()
 model_name = args.model_name
 use_metric = args.use_metric
 use_batch_center = True if args.use_batch_center=='True' else False
 T = args.T
 use_correlation = args.use_correlation
+year = args.year
 
 ## Loading data
 scores = {}
 s1 = {}
 s2 = {}
 langs = []
-year = 17
 with jsonlines.open('./dataset/WMT/wmt'+str(year)+'.jsonl') as f:
     for line in tqdm(f.iter()):
         lang = line['lang']

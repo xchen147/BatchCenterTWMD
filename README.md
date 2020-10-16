@@ -42,9 +42,9 @@ We provided metrics `SBERT`, `CKA`, `BERTscore`, `TWMD` and `TWMD`. Our `MoverSc
 
 For example, running
 ```sh
-python run_wmt.py --model_name roberta-base --use_metric TWMD --use_batch_center True --use_correlation pearsonr
+python run_wmt.py --model_name roberta-base --use_metric TWMD --use_batch_center True --use_correlation pearsonr --year 17
 ```
-with various flags reproduces our WMT results.
+with various flags reproduces our WMT-17 results.
 
 #### Some important parameters and flags for the model
  

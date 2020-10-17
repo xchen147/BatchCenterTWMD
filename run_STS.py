@@ -65,10 +65,10 @@ if __name__=="__main__":
     for year_of_sts in ['12','13','14','15','16']:
         corr = []
         s1, s2, scores = loadFile('./dataset/STS/STS'+year_of_sts+'-en-test/',year = year_of_sts)
-        for name in dset[year_of_sts]:
+        for name in s1.keys():
             corr.append(scorer.score(s1[name],s2[name],scores[name],metric=use_metric, batch_center=use_batch_center,
                 return_correlation=use_correlation)[-1])
-        len_weight = [len(s1[name]) for name in dset[year_of_sts]]
+        len_weight = [len(s1[name]) for name in s1.keys()]
         corrs.append(np.average(corr, weights = len_weight,axis=0))
 
     R = np.mean(np.array(corrs),axis=0)[0]

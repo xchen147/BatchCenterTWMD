@@ -41,7 +41,7 @@ def loadFile(fpath,year):
 
         s1[entry]=sent1
         s2[entry]=sent2
-        scores[key]=gs_scores
+        scores[entry]=gs_scores
     return s1, s2, scores
 
 ## obtaining correlation

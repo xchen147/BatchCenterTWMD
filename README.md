@@ -46,7 +46,7 @@ python run_wmt.py --model_name roberta-base --use_metric TWMD --use_batch_center
 ```
 with various flags reproduces our WMT-17 results.
 
-#### Some important parameters and flags for the model
+#### Some important parameters and flags for the `Scorer` class
  
 
 | Flags      | Explanation  | Default Value                        |

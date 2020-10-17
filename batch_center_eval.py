@@ -1,7 +1,7 @@
 import torch
 from tqdm import tqdm
 from scipy.stats import pearsonr, spearmanr, kendalltau
-from transformers import AutoConfig,AutoModelWithLMHead,AutoTokenizer, AutoModel
+from transformers import AutoConfig, AutoTokenizer, AutoModel
 import numpy as np
 from metrics import *
 
@@ -151,7 +151,7 @@ class Scorer:
         config = AutoConfig.from_pretrained(self.model_name, cache_dir='./cache')
         config.output_hidden_states = True
         tokenizer = AutoTokenizer.from_pretrained(self.model_name, cache_dir='./cache')
-        model = AutoModelWithLMHead.from_pretrained(self.model_name,config = config, cache_dir='./cache')
+        model = AutoModel.from_pretrained(self.model_name,config = config, cache_dir='./cache')
         model.to(self.device)
         return model, tokenizer
     

@@ -64,7 +64,7 @@ if __name__=="__main__":
     corrs = []
     for year_of_sts in ['12','13','14','15','16']:
         corr = []
-        s1, s2, scores = loadFile('./dataset/STS/STS'+year_of_sts+'-en-test/',year_of_sts = year_of_sts)
+        s1, s2, scores = loadFile('./dataset/STS/STS'+year_of_sts+'-en-test/',year = year_of_sts)
         for name in dset[year_of_sts]:
             corr.append(scorer.score(s1[name],s2[name],scores[name],metric=use_metric, batch_center=use_batch_center,
                 return_correlation=use_correlation)[-1])

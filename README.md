@@ -38,7 +38,7 @@ The STS dataset can also be obtained following the [SBERT-WK](https://github.com
 
 The sample codes that recreates our results on STS and WMT datasets using various metrics, with and without centering, can be found in `run_STS.py` and `run_wmt.py`.
 
-We provided metrics `SBERT`, `CKA`, `BERTscore`, `TWMD` and `TWMD`. Our `MoverScore` implementation follows the [MoverScore](https://github.com/AIPHES/emnlp19-moverscore) repository
+We provided metrics `SBERT`, `CKA`, `BERTscore`, `TWMD` and `TRWMD`. Our `MoverScore` implementation follows the [MoverScore](https://github.com/AIPHES/emnlp19-moverscore) repository
 
 For example, running
 ```sh
@@ -51,12 +51,13 @@ with various flags reproduces our WMT-17 results.
 
 | Flags      | Explanation  | Default Value                        |
 |:----------:|:------------:|:----------------------------:|
-| model-name | model names from the [transformers](https://huggingface.co/models)  | roberta-base |
+| model-name | model names from the [transformers](https://huggingface.co/models)  | bert-base-uncased |
 | layer-use  | layer embedding used for evaluation | 10 (base models) <br> 19 (large models) |
 | ref        | reference sentences            | None |
 | cand     | candidate sentences | None |
 | gs | ground truth of similarity | None
 | metric | use metrics from our metric list | TWMD |
 | batch_center | applying batch centering to the word vectors | True |
+| batch_size | batch size for evaluation | 32 |
 | temp | Temperature for TWMD and TRWMD | 0.1 (TWMD-batch) <br> 0.15 (TRWMD-batch) <br> 0.02 (TWMD/TRWMD)
 

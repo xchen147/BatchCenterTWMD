@@ -89,8 +89,7 @@ class Scorer:
             assert gs is not None, "Providing ground truth in order to compute correlation"
 
         eval_result = []
-        # eval_p = []
-        # eval_f1 = []
+
         for i in tqdm(range(int(np.ceil(len(ref)/self.batch_size)))):
             input_ref = ref[self.batch_size*i:self.batch_size*(i+1)]
             input_cand = cand[self.batch_size*i:self.batch_size*(i+1)]
@@ -120,21 +119,10 @@ class Scorer:
                 else:
                     sym = metric_used(entry_cand, entry_ref)
 
-                # if len(sym)==3:
-                #     r, p,f1 = sym
-
-                # eval_r.append(r)
-                # eval_p.append(p)
-                # eval_f1.append(f1)
-
                 eval_result.append(sym)
 
         
         eval_result = torch.stack(eval_result).detach().cpu().numpy()
-
-        # eval_r = torch.stack(eval_r).detach().cpu().numpy()
-        # eval_p = torch.stack(eval_p).detach().cpu().numpy()
-        # eval_f1 = torch.stack(eval_f1).detach().cpu().numpy()
         
         if return_correlation:
             corr_used = self.correlation_dict[return_correlation]

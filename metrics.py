@@ -58,11 +58,11 @@ def TWMD(ref, cand, T, device, SK_iter=1):
 def TRWMD(ref, cand, T):
     def unnormed_TRWMD(sent1, sent2):
         wv_prod = sent1.mm(sent2.T)
-        softmax_r = torch.exp(torch.nn.LogSoftmax(dim=1)(wv_prod/beta_eval))
-        r = torch.mean(torch.sum(soft_max_r*wv_prod,dim=1),dim=0)
+        softmax_r = torch.exp(torch.nn.LogSoftmax(dim=1)(wv_prod/T))
+        r = torch.mean(torch.sum(softmax_r*wv_prod,dim=1),dim=0)
 
-        softmax_p= torch.exp(torch.nn.LogSoftmax(dim=0)(wv_prod/beta_eval))
-        p = torch.mean(torch.sum(soft_max_p*wv_prod,dim=0),dim=0)
+        softmax_p= torch.exp(torch.nn.LogSoftmax(dim=0)(wv_prod/T))
+        p = torch.mean(torch.sum(softmax_p*wv_prod,dim=0),dim=0)
     
         f1 = 2*r*p/(r+p)
         return r, p, f1

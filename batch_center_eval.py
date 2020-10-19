@@ -110,13 +110,14 @@ class Scorer:
                 metric_used = self.metric_dict[metric.upper()]
                 
                 if metric.upper()[0]=='T':
-                    if T is None:   
-                        if metric.upper() == 'TWMD':
+                    if metric.upper() == 'TWMD':
+                        if T is None:
                             T = 0.1 if batch_center else 0.02
-                            sym = metric_used(entry_cand, entry_ref, T, device=self.device)
-                        else:
+                        sym = metric_used(entry_cand, entry_ref, T, device=self.device)
+                    else:
+                        if T is None:
                             T = 0.15 if batch_center else 0.02
-                            sym = metric_used(entry_cand, entry_ref, T)
+                        sym = metric_used(entry_cand, entry_ref, T)
                 else:
                     sym = metric_used(entry_cand, entry_ref)
 
